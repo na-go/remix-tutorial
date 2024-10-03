@@ -5,8 +5,9 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
+import { memo } from "react";
 
-export default function App() {
+export const app = () => {
   return (
     <html lang="en">
       <head>
@@ -51,3 +52,5 @@ export default function App() {
     </html>
   );
 }
+
+export default memo(app)

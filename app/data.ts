@@ -62,7 +62,7 @@ const fakeContacts = {
 
 ////////////////////////////////////////////////////////////////////////////////
 // Handful of helper functions to be called from route loaders and actions
-export async function getContacts(query?: string | null) {
+export const getContacts = async (query?: string | null) => {
   await new Promise((resolve) => setTimeout(resolve, 500));
   let contacts = await fakeContacts.getAll();
   if (query) {
@@ -73,7 +73,7 @@ export async function getContacts(query?: string | null) {
   return contacts.sort(sortBy("last", "createdAt"));
 }
 
-export async function createEmptyContact() {
+export const createEmptyContact = async () => {
   const contact = await fakeContacts.create({});
   return contact;
 }
@@ -82,7 +82,7 @@ export async function getContact(id: string) {
   return fakeContacts.get(id);
 }
 
-export async function updateContact(id: string, updates: ContactMutation) {
+export const updateContact = async (id: string, updates: ContactMutation) => {
   const contact = await fakeContacts.get(id);
   if (!contact) {
     throw new Error(`No contact found for ${id}`);
